@@ -1,6 +1,7 @@
 """
 Script to load the json files of COVID-19 dataset, obtain the raw text and save the dataset
 
+Note to self: It's likely I'll need to find more data to train the MLM. ^_^
 """
 import os
 import json
