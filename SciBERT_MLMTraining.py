@@ -1,3 +1,7 @@
+"""
+Script to further fine-tune the masked language model of the SciBERT model.
+Saves the output.
+"""
 import os
 import wget
 import torch
@@ -51,15 +55,8 @@ class LoadDataSet(Dataset):
 
         return token_ids_tensor, attn_mask
 
-train_set = LoadDataSet(filename='Test_Text100.csv', maxlen=64)
+train_set = LoadDataSet(filename='Test_Text1.csv', maxlen=64)
 train_loader = DataLoader(train_set, batch_size=8)
-
-#tokID = train_loader.dataset[0][0].unsqueeze(0)
-#attID = train_loader.dataset[0][1].unsqueeze(0)
-
-#a, b = bert_layer(train_loader.dataset[0][0].unsqueeze(0), attention_mask=train_loader.dataset[0][1].unsqueeze(0))
-
-#print(a.shape)
 
 class MaskedLM(nn.Module):
     def __init__(self):
@@ -85,11 +82,9 @@ if torch.cuda.is_available():
 else:
     device = 'cpu'
 
-device = 'cpu'
-
 torch.cuda.empty_cache()
 
-def train(model, optimizer, train_loader, device, epochs=3, print_every=20):
+def train(model, optimizer, train_loader, device, epochs=3, print_every=100):
 
     model.to(device)
 
@@ -126,7 +121,7 @@ def train(model, optimizer, train_loader, device, epochs=3, print_every=20):
         print("  Average training loss: {0:.6f}".format(avg_train_loss))
 
 
-train(model, optimizer, train_loader, device, epochs=1, print_every=5)
+train(model, optimizer, train_loader, device, epochs=1, print_every=100)
 
 if not os.path.isdir('D:/Dan/PythonProjects/SciBERT_CORD19/Models/'):
     os.mkdir('D:/Dan/PythonProjects/SciBERT_CORD19/Models/')
