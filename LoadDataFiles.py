@@ -1,3 +1,7 @@
+"""
+Script to load the json files of COVID-19 dataset, obtain the raw text and save the dataset
+
+"""
 import os
 import json
 import pandas
@@ -28,10 +32,10 @@ class DataLoader():
 
 
 # Path to dataset
-directory = 'D:/Dan/PythonProjects/SciBERT_CORD19/example_test'
+directory = 'D:/Dan/PythonProjects/SciBERT_CORD19/RawText'
 
 data = DataLoader()
-hey = data.ObtainData(directory)
-data.SaveData(hey, 'TestItems2.csv')
+savedir = data.ObtainData(directory)
+data.SaveData(savedir, 'RawText.csv')
 
-#print(hey)
+#print(RawText)
