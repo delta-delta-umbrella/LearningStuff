@@ -1,3 +1,12 @@
+"""
+Script to process the text, namely:
+ - Remove references
+ - Separate the sentences, line by line
+ - Protect periods for things such as e.g., i.e., etc.
+ 
+Save the data as both .txt and .csv for future use (perhaps) ^_^
+"""
+
 import pandas
 import re
 import codecs
@@ -73,11 +82,9 @@ def SaveDataText(filename, data):
     for j in range(0, len(data)):
         f.write(data['Processed Text'].iloc[j]+" \r\n\n")
 
-testdata = LoadData('TestItems2.csv')
+testdata = LoadData('RawText.csv')
 testdata = TextProcessor(testdata)
 testdata = testdata.ProcessData()
 
-SaveData('Test_Text100.csv', testdata)
-SaveDataText('Test_Text100.txt', testdata)
-
-# might have to do the masking yourself
+SaveData('Test_Text1.csv', testdata)
+SaveDataText('Test_Text1.txt', testdata)
