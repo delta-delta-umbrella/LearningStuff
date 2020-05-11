@@ -1,4 +1,9 @@
-# Loading the checkpoints for resuming training
+"""
+This script is still pretty rough, need to work on it. Will upload as it is being completed.
+
+T_T
+
+"""
 
 from transformers import (
     BertConfig,
