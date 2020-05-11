@@ -1,6 +1,8 @@
 """
 Script to further fine-tune the masked language model of the SciBERT model.
 Saves the output.
+
+Note to self: Tested and works okay! ^_^!!
 """
 import os
 import wget
